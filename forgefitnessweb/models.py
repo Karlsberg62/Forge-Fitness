@@ -19,7 +19,7 @@ class Profile(models.Model):
     address = models.TextField()
     
     def __str__(self):
-        return self.name
+        return f'{self.user.username}' 
 
 class Comment(models.Model):
     post = models.ForeignKey(
