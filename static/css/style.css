@@ -1,0 +1,44 @@
+
+/* Base Page */
+
+body {
+    background-color: #000000;
+}
+
+/* Navbar */
+
+.logo {
+   max-height: 100px; 
+   max-width: 100px;
+   margin-right: 20px;
+}
+
+.navbar-brand {
+    margin-right: auto; /* Move the logo to the left */
+}
+
+.nav-item a {
+    font-weight: bold; /* Make the text bold */
+    margin-right: 20px; /* Add space between links */
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust spacing between buttons */
+}
+
+.buttons .btn {
+    color: #fff;
+}
+
+/* Footer */
+
+.footer .list-unstyled li a {
+    color: #fff; /* Set text color to white */
+    font-weight: bold; /* Make the text bold */
+}
+
+.footer .buttons .btn {
+    color: #fff;
+}

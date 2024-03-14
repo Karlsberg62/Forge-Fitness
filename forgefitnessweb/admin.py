@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Classes, Profile, CommentReview
+from .models import Sessions, Profile, CommentReview
 
 # Register your models here.
 admin.site.register(Profile)
 admin.site.register(CommentReview)
-admin.site.register(Classes)
+admin.site.register(Sessions)
