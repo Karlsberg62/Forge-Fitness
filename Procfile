@@ -1,1 +1,1 @@
-web: gunicorn collegeconnect.wsgi
+web: gunicorn forgefitness.wsgi
