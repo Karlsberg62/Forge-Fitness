@@ -47,3 +47,16 @@ body {
 .shadow {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the shadow color and intensity as needed */
 }
+
+/* Register page */
+.register-pic {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+.form-group {
+    margin-bottom: 20px; /* Add margin between form groups */
+  }
+.reg-btn {
+    margin-top: 20px; /* Add margin to the button */
+}

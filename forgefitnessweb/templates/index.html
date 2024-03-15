@@ -11,8 +11,12 @@
             <p class="lead text-white">At Forge Fitness, we're more than just a gym - we're your ultimate fitness destination. With state-of-the-art equipment, personalized training programs, and a supportive community, we're dedicated to helping you achieve your fitness goals</p>
             <!-- Buttons -->
             <div class="mt-4">
-                <button class="btn btn-success mr-2">Register</button>
-                <button class="btn btn-dark">Login</button>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="btn btn-primary">View Profile</a>
+                {% else %}
+                    <a href="{% url 'account_signup' %}" class="btn btn-success mr-2">Register</a>
+                    <a href="{% url 'account_login' %}" class="btn btn-dark">Login</a>
+                {% endif %}
             </div>
         </div>
         <!-- Hero Image -->

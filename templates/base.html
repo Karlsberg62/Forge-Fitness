@@ -31,7 +31,7 @@
       <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand" href="index.html"><img class="logo" src="{% static 'media/images/forge-fitness-hr.png' %}" alt="Forge Fitness"></a>
+            <a class="navbar-brand" href="{% url 'index' %}"><img class="logo" src="{% static 'media/images/forge-fitness-hr.png' %}" alt="Forge Fitness"></a>
 
             <!-- Links on the left -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -53,10 +53,12 @@
               <!-- Buttons for Register/Login -->
                 <div class="buttons">
                     {% if user.is_authenticated %}
-                    <button class="btn btn-primary">Logout</button>
+                    <a href="{% url 'profile' %}" class="btn btn-primary">Profile</a>
+                    <a class="btn btn-dark {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                    
                     {% else %}
-                    <a href="{% url 'account_signup' %}" class="btn btn-success">Register</a>
-                    <a href="{% url 'account_login' %}" class="btn btn-dark">Login</a>
+                    <a class="btn btn-success {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
+                    <a class="btn btn-dark {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
                     {% endif %}
                 </div>
         </div>
@@ -68,7 +70,7 @@
     {% endblock content %}
   </main>
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+    <footer class="footer mt-auto py-3 fixed-bottom">
       <div class="container">
           <div class="row">
               <div class="col">
