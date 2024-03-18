@@ -19,21 +19,7 @@ class Profile(models.Model):
     
     def __str__(self):
         return f'{self.user.username}' 
-
-class CommentReview(models.Model):
-    username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE, related_name="commenter")
-    image = models.ForeignKey(Profile, blank=True, null=True, on_delete=models.CASCADE, related_name="profile_picture")
-    content = models.TextField()
-    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
-    created_on = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = 'Review'
-        verbose_name_plural = 'Reviews'
-
-    def __str__(self):
-        return f"{self.user.username} - {self.created_on}"  
-
+ 
 class Sessions(models.Model):
     title = models.CharField(max_length=200, unique=True)
     location = models.CharField(max_length=200)
@@ -50,3 +36,12 @@ class Sessions(models.Model):
     def __str__(self):
         return f"{self.title} class at {self.location}, {self.time}"   
     
+class CommentReview(models.Model):
+    post = models.ForeignKey(Sessions, on_delete=models.CASCADE, related_name="comments")
+    username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    content = models.TextField()
+    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.username} - {self.created_on}" 

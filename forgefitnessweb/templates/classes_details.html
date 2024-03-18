@@ -6,4 +6,18 @@
     <p>{{sessions.location}}, {{sessions.date}}, {{sessions.time}} </p>
     <p>{{sessions.description}}</p>
 </div>
+
+<br>
+<h2>Comments</h2>
+{% if not sesssions.comments.all %}
+    No Comments Yet... 
+    <a href="#">Add One</a>
+{% else %}
+    {% for comment in sessions.comments.all %}
+    {{comment.username}} - {{comment.created_on}}
+    <br>
+    {{comment.content}}
+    {% endfor %}
+{% endif %}
+
 {% endblock %}
