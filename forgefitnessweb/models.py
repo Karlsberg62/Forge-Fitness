@@ -38,6 +38,7 @@ class Sessions(models.Model):
     title = models.CharField(max_length=200, unique=True)
     location = models.CharField(max_length=200)
     time = models.TimeField()
+    date = models.DateField()
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
 

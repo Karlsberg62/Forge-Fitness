@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="text-light">
+    <h2 class="font-weight-bold">{{sessions.title}}</h2>
+    <p>{{sessions.location}}, {{sessions.date}}, {{sessions.time}} </p>
+    <p>{{sessions.description}}</p>
+</div>
+{% endblock %}

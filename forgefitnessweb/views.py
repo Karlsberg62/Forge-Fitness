@@ -8,3 +8,12 @@ def index(request):
 
 def profile(request):
     return render(request,'profile.html')
+
+class SessionList(generic.ListView):
+    model = Sessions
+    template_name = 'classes.html'
+    paginate_by = 6
+
+class SessionDetail(generic.DetailView):
+    model = Sessions
+    template_name = 'classes_details.html'
