@@ -12,7 +12,7 @@
 {% if not sesssions.comments.all %}
     No Comments Yet... 
     <a href="#">Add One</a>
-{% else %}
+{% else %}p
     {% for comment in sessions.comments.all %}
     {{comment.username}} - {{comment.created_on}}
     <br>
