@@ -3,22 +3,30 @@
 
 {% block content %}
 <div class="text-light">
+    <!-- Display session details -->
     <h2 class="font-weight-bold">{{ sessions.title }}</h2>
     <p>{{ sessions.location }}, {{ sessions.date }}, {{ sessions.time }}</p>
     <p>{{ sessions.description }}</p>
 </div>
 
 <br>
+
 <h2 class="text-light">Comments</h2>
+
 {% if not sessions.comments.all %}
+    <!-- Display a message if there are no comments -->
     <p class="text-light">No Comments Yet... <a href="#" class="text-light">Add One</a></p>
 {% else %}
+    <!-- Iterate over each comment and display them in a card -->
     {% for comment in sessions.comments.all %}
     <div class="card bg-dark text-light mb-3">
         <div class="card-header">{{ comment.username }} - {{ comment.created_on }}</div>
         <div class="card-body">
+            <!-- Display comment details -->
             <p class="card-text">Rating: {{ comment.rating }}</p>
             <p class="card-text">{{ comment.body }}</p>
+            
+            <!-- Display edit and delete buttons for authenticated user's own comments -->
             {% if request.user.is_authenticated and comment.username == request.user %}
                 <a href="{% url 'edit-comment' comment.pk %}" class="btn btn-dark">Edit</a>
                 <a href="{% url 'delete-comment' comment.pk %}" class="btn btn-danger">Delete</a>
@@ -27,7 +35,10 @@
     </div>
     {% endfor %}
 {% endif %}
+
 <br>
+
+<!-- Add Comment button -->
 <a class="btn btn-success" href="{% url 'add-comment' sessions.slug %}">Add Comment</a>
 
 {% endblock %}

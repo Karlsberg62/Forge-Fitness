@@ -4,12 +4,13 @@
 
 
 {% block content %}
-
+<!-- Add Comment form -->
 <h1 class="text-light font-weight-bold text-center"> Add Comment </h1>
 
 <div class="container m-5 text-light">
     <form action="" method="post">
         {% csrf_token %}
+        <!-- Render the form using crispy forms -->
         {{ form|crispy }}
         <input type="submit" name="Submit">
     </form>
