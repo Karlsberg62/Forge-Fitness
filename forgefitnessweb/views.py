@@ -34,3 +34,26 @@ def add_comment(request, slug):
         form = CommentForm()
     
     return render(request, 'add_comment.html', {'form': form, 'session_obj': session_obj})
+
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(CommentReview, pk=comment_id)
+    if request.user.is_authenticated and comment.username == request.user:
+        if request.method == 'POST':
+            form = CommentForm(request.POST, instance=comment)
+            if form.is_valid():
+                form.save()
+                return redirect('session-detail', slug=comment.post.slug)
+        else:
+            form = CommentForm(instance=comment)
+        return render(request, 'edit_comment.html', {'form': form, 'comment': comment})
+    else:
+        return redirect('session-detail', slug=comment.post.slug)
+
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(CommentReview, pk=comment_id)
+    if request.user.is_authenticated and comment.username == request.user:
+        session_slug = comment.post.slug
+        comment.delete()
+        return redirect('session-detail', slug=session_slug)
+    else:
+        return redirect('session-detail', slug=comment.post.slug)

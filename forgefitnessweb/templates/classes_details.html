@@ -19,6 +19,10 @@
         <div class="card-body">
             <p class="card-text">Rating: {{ comment.rating }}</p>
             <p class="card-text">{{ comment.body }}</p>
+            {% if request.user.is_authenticated and comment.username == request.user %}
+                <a href="{% url 'edit-comment' comment.pk %}" class="btn btn-dark">Edit</a>
+                <a href="{% url 'delete-comment' comment.pk %}" class="btn btn-danger">Delete</a>
+            {% endif %}
         </div>
     </div>
     {% endfor %}
