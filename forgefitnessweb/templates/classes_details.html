@@ -15,18 +15,31 @@
 
 {% if not sessions.comments.all %}
     <!-- Display a message if there are no comments -->
-    <p class="text-light">No Comments Yet... <a href="#" class="text-light">Add One</a></p>
+    <p class="text-light">No Comments Yet... </p>
 {% else %}
     <!-- Iterate over each comment and display them in a card -->
     {% for comment in sessions.comments.all %}
     <div class="card bg-dark text-light mb-3">
         <div class="card-header">
-             <!-- Display profile picture -->
-             <img src="{{ comment.user.profile.profile_pic.url }}" alt="Profile Picture" class="rounded-circle mr-2" style="height: 200 width=200;">
-            {{ comment.username }} - {{ comment.created_on }}</div>
+            <div class="row align-items-center">
+                <!-- Profile picture -->
+                <div class="col-auto">
+                    <img src="{{ comment.username.profile.profile_pic.url }}" alt="Profile Picture" class="rounded-circle mr-2 profile-pic" style="height: 50px; width: 50px;">
+                </div>
+                <!-- Name -->
+                <div class="col">
+                    <h5>{{ comment.username }}</h5>
+                </div>
+                <!-- Date and time -->
+                <div class="col">
+                    <p class="text-light">{{ comment.created_on }}</p>
+                </div>
+            </div>
+        </div>
         <div class="card-body">
-            <!-- Display comment details -->
+            <!-- Rating -->
             <p class="card-text">Rating: {{ comment.rating }}</p>
+            <!-- Comment body -->
             <p class="card-text">{{ comment.body }}</p>
             
             <!-- Display edit and delete buttons for authenticated user's own comments -->

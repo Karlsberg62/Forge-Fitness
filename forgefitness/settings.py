@@ -29,6 +29,7 @@ SECRET_KEY = os.environ.get("SK")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEBUG" in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['.gitpod.io', '.herokuapp.com']
 CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io', 'https://*.herokuapp.com']
@@ -43,13 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cloudinary_storage',
+    'cloudinary',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'forgefitnessweb',
     'crispy_forms',
     'crispy_bootstrap5',
-    'cloudinary',
 ]
 
 SITE_ID = 1

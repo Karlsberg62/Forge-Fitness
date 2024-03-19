@@ -60,3 +60,9 @@ body {
 .reg-btn {
     margin-top: 20px; /* Add margin to the button */
 }
+
+/* Profile Pic */
+
+.profile-pic {
+    border: 2px solid #fff; 
+}
