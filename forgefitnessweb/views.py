@@ -20,40 +20,55 @@ class SessionDetail(generic.DetailView):
     template_name = 'classes_details.html'
 
 def add_comment(request, slug):
+    # Retrieve the session object corresponding to the provided slug
     session_obj = get_object_or_404(Sessions, slug=slug)
     
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
+            # If the form is valid, save the comment. Assign the authed user & session object to the comment
             comment = form.save(commit=False)
-            comment.username = request.user  # Assuming the user is authenticated
-            comment.post = session_obj
+            comment.username = request.user 
+            comment.post = session_obj  
             comment.save()
-            return redirect('session-detail', slug=slug)  # Redirect to session detail page
+            # Redirect to the session detail page after successfully adding the comment
+            return redirect('session-detail', slug=slug)
     else:
+        # If the request method is not POST, render the empty comment form
         form = CommentForm()
     
+    # Render the add_comment.html template with the comment form and session object
     return render(request, 'add_comment.html', {'form': form, 'session_obj': session_obj})
 
 def edit_comment(request, comment_id):
+    # Retrieve the comment object based on the provided comment ID
     comment = get_object_or_404(CommentReview, pk=comment_id)
     if request.user.is_authenticated and comment.username == request.user:
+        # Check if user is the owner of the comment
         if request.method == 'POST':
+            # If request method is POST, process the form. If it's valid, save.
             form = CommentForm(request.POST, instance=comment)
             if form.is_valid():
                 form.save()
+                # Redirect if successful, redirect elsewhere if not 
                 return redirect('session-detail', slug=comment.post.slug)
         else:
             form = CommentForm(instance=comment)
+        # Render the edit_comment.html template
         return render(request, 'edit_comment.html', {'form': form, 'comment': comment})
     else:
+        # If user is not the owner of the comment, redirect to the session detail page
         return redirect('session-detail', slug=comment.post.slug)
 
 def delete_comment(request, comment_id):
+    # Retrieve the comment object based on the provided comment ID
     comment = get_object_or_404(CommentReview, pk=comment_id)
     if request.user.is_authenticated and comment.username == request.user:
+        # Check if the logged-in user is the owner of the comment
         session_slug = comment.post.slug
+        # Delete the comment
         comment.delete()
+        # Redirect if successful, redirect elsewhere if not 
         return redirect('session-detail', slug=session_slug)
     else:
         return redirect('session-detail', slug=comment.post.slug)
