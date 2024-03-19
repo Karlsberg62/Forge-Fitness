@@ -1,25 +1,29 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
 <div class="text-light">
-    <h2 class="font-weight-bold">{{sessions.title}}</h2>
-    <p>{{sessions.location}}, {{sessions.date}}, {{sessions.time}} </p>
-    <p>{{sessions.description}}</p>
+    <h2 class="font-weight-bold">{{ sessions.title }}</h2>
+    <p>{{ sessions.location }}, {{ sessions.date }}, {{ sessions.time }}</p>
+    <p>{{ sessions.description }}</p>
 </div>
 
 <br>
-<h2>Comments</h2>
+<h2 class="text-light">Comments</h2>
 {% if not sessions.comments.all %}
-    No Comments Yet... 
-    <a href="#">Add One</a>
+    <p class="text-light">No Comments Yet... <a href="#" class="text-light">Add One</a></p>
 {% else %}
     {% for comment in sessions.comments.all %}
-    {{comment.username}} - {{comment.created_on}}
-    <br>
-    Rating: {{comment.rating}}
-    <br>
-    {{comment.body}}
+    <div class="card bg-dark text-light mb-3">
+        <div class="card-header">{{ comment.username }} - {{ comment.created_on }}</div>
+        <div class="card-body">
+            <p class="card-text">Rating: {{ comment.rating }}</p>
+            <p class="card-text">{{ comment.body }}</p>
+        </div>
+    </div>
     {% endfor %}
 {% endif %}
+<br>
+<a class="btn btn-success" href="{% url 'add-comment' sessions.slug %}">Add Comment</a>
 
 {% endblock %}

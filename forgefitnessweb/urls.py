@@ -6,5 +6,6 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("profile/", views.profile, name="profile"),
     path("classes/", views.SessionList.as_view(), name="classes"),
-    path("<slug:slug>/",views.SessionDetail.as_view(), name="session-detail")
+    path("<slug:slug>/",views.SessionDetail.as_view(), name="session-detail"),
+    path("<slug:slug>/add_comment/", views.add_comment, name="add-comment"),
 ]
