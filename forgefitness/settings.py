@@ -42,12 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'forgefitnessweb',
     'crispy_forms',
     'crispy_bootstrap5',
+    'cloudinary',
 ]
 
 SITE_ID = 1

@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Profile(models.Model):
     #Name, Age, Gender, Phone, Email, Address, Current Plan 
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    profile_pic = CloudinaryField('image', default='foggy-bg.jpg')
     age = models.PositiveIntegerField()
     gender_choice = [
         ('M', 'Male'),
@@ -15,7 +17,6 @@ class Profile(models.Model):
     phone = models.CharField(max_length=15)
     address = models.TextField()
     postcode = models.TextField(default="")
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     
     def __str__(self):
         return f'{self.user}' 

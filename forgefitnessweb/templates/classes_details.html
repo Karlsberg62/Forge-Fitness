@@ -20,7 +20,10 @@
     <!-- Iterate over each comment and display them in a card -->
     {% for comment in sessions.comments.all %}
     <div class="card bg-dark text-light mb-3">
-        <div class="card-header">{{ comment.username }} - {{ comment.created_on }}</div>
+        <div class="card-header">
+             <!-- Display profile picture -->
+             <img src="{{ comment.user.profile.profile_pic.url }}" alt="Profile Picture" class="rounded-circle mr-2" style="height: 200 width=200;">
+            {{ comment.username }} - {{ comment.created_on }}</div>
         <div class="card-body">
             <!-- Display comment details -->
             <p class="card-text">Rating: {{ comment.rating }}</p>
