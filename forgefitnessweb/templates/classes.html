@@ -12,14 +12,18 @@
                 Forge Fitness prides itself by offering premium fitness classes, free of charge, to all our members.
             </p>
         </div>
+         <!-- Classes Section -->
         <div class="container">
             <div class="row">
                 {% for session in object_list %}
                 <div class="col-md-4 mb-4">
                     <div class="card bg-dark text-white">
                         <div class="card-body">
+                            <!-- Session Title with Link -->
                             <h5 class="card-title"><a href="{% url 'session-detail' session.slug %}" class="text-white">{{ session.title }}</a></h5>
+                            <!-- Session Location, Date, and Time -->
                             <p class="card-text">{{ session.location }}, {{ session.date }}, {{ session.time }}</p>
+                            <!-- Session Description -->
                             <p class="card-text">{{ session.description }}</p>
                         </div>
                     </div>
@@ -27,6 +31,8 @@
                 {% endfor %}
             </div>
         </div>
+
+         <!-- Pagination Section -->
         {% if is_paginated %}
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">

@@ -1,4 +1,4 @@
-from .models import CommentReview
+from .models import CommentReview, Profile
 from django import forms
 
 
