@@ -7,16 +7,16 @@ class Profile(models.Model):
     #Name, Age, Gender, Phone, Email, Address, Current Plan 
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     profile_pic = CloudinaryField('Profile Picture', default='foggy-bg.jpg')
-    age = models.PositiveIntegerField()
+    age = models.PositiveIntegerField(null=True)
     gender_choice = [
         ('M', 'Male'),
         ('F', 'Female'),
         ('O', 'Other'),
     ]
-    gender = models.CharField(max_length=1, choices=gender_choice)
-    phone = models.CharField(max_length=15)
-    address = models.TextField()
-    postcode = models.TextField(default="")
+    gender = models.CharField(max_length=1, choices=gender_choice, null=True)
+    phone = models.CharField(max_length=15, null=True)
+    address = models.TextField(null=True)
+    postcode = models.TextField(default="", null=True)
     
     def __str__(self):
         return f'{self.user}' 

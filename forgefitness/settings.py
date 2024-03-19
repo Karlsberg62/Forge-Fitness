@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'forgefitnessweb',
+    'forgefitnessweb.apps.ForgefitnesswebConfig',
     'crispy_forms',
     'crispy_bootstrap5',
 ]

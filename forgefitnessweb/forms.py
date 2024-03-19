@@ -1,5 +1,6 @@
 from .models import CommentReview, Profile
 from django.contrib.auth.forms import UserChangeForm, User
+from allauth.account.forms import SignupForm
 from django import forms
 
 

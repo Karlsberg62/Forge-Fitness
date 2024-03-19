@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
+from allauth.account.views import SignupView
 from django.urls import reverse_lazy
 from .models import Profile, CommentReview, Sessions
 from .forms import CommentForm, EditSettingsForm
