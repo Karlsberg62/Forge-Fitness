@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import Profile, CommentReview, Sessions
-from .forms import CommentForm, EditProfileForm
+from .forms import CommentForm, EditSettingsForm
 
 # Create your views here.
 def index(request):
@@ -76,9 +77,20 @@ def delete_comment(request, comment_id):
         return redirect('session-detail', slug=comment.post.slug)
 
 class UserEditView(generic.UpdateView):
-    form_class = EditProfileForm
-    template_name = 'edit_profile.html'
+    form_class = EditSettingsForm
+    template_name = 'edit_settings.html'
     success_url = reverse_lazy('index')
 
     def get_object(self):
         return self.request.user
+
+class EditProfileView(generic.UpdateView):
+    model = Profile
+    template_name = "edit_profile.html"
+    fields = ['profile_pic', 'age', 'gender', 'phone', 'address', 'postcode']
+
+    def get_success_url(self):
+        return reverse_lazy('index')
+
+    def get_object(self, queryset=None):
+        return self.request.user.profile

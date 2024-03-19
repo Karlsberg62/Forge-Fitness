@@ -10,5 +10,6 @@ urlpatterns = [
     path("<slug:slug>/add_comment/", views.add_comment, name="add-comment"),
     path('comment/<int:comment_id>/edit/', views.edit_comment, name='edit-comment'),
     path('comment/<int:comment_id>/delete/', views.delete_comment, name='delete-comment'),
-    path('profile/edit_profile/',views.UserEditView.as_view(), name="edit_profile"),
+    path('profile/edit_settings/',views.UserEditView.as_view(), name="edit_settings"),
+    path('profile/edit_profile/', views.EditProfileView.as_view(), name="edit_profile"),
 ]

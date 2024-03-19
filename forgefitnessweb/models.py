@@ -6,7 +6,7 @@ from cloudinary.models import CloudinaryField
 class Profile(models.Model):
     #Name, Age, Gender, Phone, Email, Address, Current Plan 
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    profile_pic = CloudinaryField('image', default='foggy-bg.jpg')
+    profile_pic = CloudinaryField('Profile Picture', default='foggy-bg.jpg')
     age = models.PositiveIntegerField()
     gender_choice = [
         ('M', 'Male'),
