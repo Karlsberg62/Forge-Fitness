@@ -9,14 +9,16 @@
 
 <br>
 <h2>Comments</h2>
-{% if not sesssions.comments.all %}
+{% if not sessions.comments.all %}
     No Comments Yet... 
     <a href="#">Add One</a>
-{% else %}p
+{% else %}
     {% for comment in sessions.comments.all %}
     {{comment.username}} - {{comment.created_on}}
     <br>
-    {{comment.content}}
+    Rating: {{comment.rating}}
+    <br>
+    {{comment.body}}
     {% endfor %}
 {% endif %}
 

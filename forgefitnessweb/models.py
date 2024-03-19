@@ -37,9 +37,10 @@ class Sessions(models.Model):
         return f"{self.title} class at {self.location}, {self.time}"   
     
 class CommentReview(models.Model):
+
+    username = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='comments')
     post = models.ForeignKey(Sessions, on_delete=models.CASCADE, related_name="comments")
-    username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-    content = models.TextField()
+    body = models.TextField()
     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     created_on = models.DateTimeField(auto_now_add=True)
 
