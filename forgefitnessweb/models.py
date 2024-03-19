@@ -4,8 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Profile(models.Model):
     #Name, Age, Gender, Phone, Email, Address, Current Plan 
-    username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE, max_length=100)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     age = models.PositiveIntegerField()
     gender_choice = [
         ('M', 'Male'),
@@ -16,9 +15,10 @@ class Profile(models.Model):
     phone = models.CharField(max_length=15)
     address = models.TextField()
     postcode = models.TextField(default="")
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     
     def __str__(self):
-        return f'{self.user.username}' 
+        return f'{self.user}' 
  
 class Sessions(models.Model):
     title = models.CharField(max_length=200, unique=True)
