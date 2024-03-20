@@ -54,8 +54,12 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
+ACCOUNT_SIGNUP_REDIRECT_URL = "/profile/edit_profile"
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_FORMS = {
+    'signup': 'forgefitnessweb.forms.CustomSignupForm',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
