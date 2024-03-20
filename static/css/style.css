@@ -14,18 +14,18 @@ body {
 }
 
 .navbar-brand {
-    margin-right: auto; /* Move the logo to the left */
+    margin-right: auto; 
 }
 
 .nav-item a {
-    font-weight: bold; /* Make the text bold */
-    margin-right: 20px; /* Add space between links */
+    font-weight: bold; 
+    margin-right: 20px; 
 }
 
 .buttons {
     display: flex;
     align-items: center;
-    gap: 10px; /* Adjust spacing between buttons */
+    gap: 10px; 
 }
 
 .buttons .btn {
@@ -34,18 +34,29 @@ body {
 
 /* Footer */
 
-.footer .list-unstyled li a {
-    color: #fff; /* Set text color to white */
-    font-weight: bold; /* Make the text bold */
+.footer .list-inline {
+    color: #fff; 
+    text-align: center;
+    font-weight: bold;
 }
 
 .footer .buttons .btn {
     color: #fff;
 }
 
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+}
+
+.list-inline li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
 /* Shadow for Images */
 .shadow {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the shadow color and intensity as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Register page */
@@ -55,10 +66,10 @@ body {
   }
 
 .form-group {
-    margin-bottom: 20px; /* Add margin between form groups */
+    margin-bottom: 20px; 
   }
 .reg-btn {
-    margin-top: 20px; /* Add margin to the button */
+    margin-top: 20px; 
 }
 
 /* Profile Pic */
