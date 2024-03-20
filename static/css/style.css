@@ -1,7 +1,13 @@
 
 /* Base Page */
 
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.base-background {
     background-color: #000000;
 }
 
@@ -38,15 +44,6 @@ body {
     color: #fff; 
     text-align: center;
     font-weight: bold;
-}
-
-.footer .buttons .btn {
-    color: #fff;
-}
-
-.list-inline {
-    padding-left: 0;
-    list-style: none;
 }
 
 .list-inline li {

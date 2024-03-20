@@ -29,10 +29,10 @@
      <link rel="icon" type="image/png" sizes="32x32" href="{% static 'media/images/favicon-32x32.png' %}">
      <link rel="icon" type="image/png" sizes="16x16" href="{% static 'media/images/favicon-16x16.png' %}">
 </head>
-<body>
+<body class="base-background">
     <!-- Nav Bar -->
       <!-- Nav Bar -->
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light sticky-top base-background">
         <div class="container">
             <!-- Logo -->
             <a class="navbar-brand" href="{% url 'index' %}"><img class="logo" src="{% static 'media/images/forge-fitness-hr.png' %}" alt="Forge Fitness"></a>
@@ -68,33 +68,34 @@
         </div>
     </nav>
 
-  <main class="container mt-5">
+  <main class="container-fluid mb-lg-5 mb-3">
     {% block content %}
     <!-- Content Goes here -->
     {% endblock content %}
   </main>
+
     <!-- Footer -->
-  <footer class="footer mt-auto py-3 fixed-bottom">
-      <div class="container">
-          <div class="row">
-              <div class="col">
-                  <ul class="list-inline">
-                      <li><a class="text-light" href="#">Our Clubs</a></li>
-                      <li><a class="text-light" href="#">Classes</a></li>
-                      <li><a class="text-light" href="#">Team</a></li>
-                      <li><a class="text-light" href="#">Contact Us</a></li>
-                  </ul>
-              </div>
-              <div class="col">
-                <ul class="list-inline">
-                    <li><a class="text-light" href="#"><i class="fab fa-facebook"></i></a></li>
-                    <li><a class="text-light" href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a class="text-light" href="#"><i class="fab fa-instagram"></i></a></li>
-                </ul>
+    <footer class="footer py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="list-inline">
+                        <li><a class="text-light" href="#">Our Clubs</a></li>
+                        <li><a class="text-light" href="#">Classes</a></li>
+                        <li><a class="text-light" href="#">Team</a></li>
+                        <li><a class="text-light" href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-inline">
+                        <li><a class="text-light" href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a class="text-light" href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="text-light" href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
             </div>
-          </div>
-      </div>
-  </footer>
+        </div>
+    </footer>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
