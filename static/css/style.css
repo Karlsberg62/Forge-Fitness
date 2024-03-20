@@ -38,6 +38,11 @@ html, body {
     color: #fff;
 }
 
+.burger {
+    color:#fff !important;
+    font-size:28px !important;
+}
+
 /* Footer */
 
 .footer .list-inline {
