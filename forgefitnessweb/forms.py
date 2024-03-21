@@ -1,4 +1,4 @@
-from .models import CommentReview, Profile
+from .models import CommentReview, Profile, AnonContact
 from django.contrib.auth.forms import UserChangeForm, User
 from allauth.account.forms import SignupForm
 from django import forms
@@ -14,7 +14,7 @@ class EditSettingsForm(UserChangeForm):
     username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
     password = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}), required=False)
     first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'})) 
-    last_name= forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'})) 
+    last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'})) 
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))
     #Admin
     #is_superuser = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class':'form-control'}), required=False),
@@ -30,3 +30,8 @@ class EditSettingsForm(UserChangeForm):
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(max_length=50, required=True)
     last_name = forms.CharField(max_length=50, required=True)
+
+class AnonContactForm(forms.ModelForm):
+    class Meta:
+        model = AnonContact
+        fields = ['name', 'email', 'message']

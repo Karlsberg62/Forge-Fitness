@@ -7,7 +7,7 @@ from allauth.account.views import SignupView
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Profile, CommentReview, Sessions
-from .forms import CommentForm, EditSettingsForm
+from .forms import CommentForm, EditSettingsForm, AnonContactForm
 
 # Create your views here.
 def index(request):
@@ -19,8 +19,21 @@ def our_clubs(request):
 def team(request):
     return render(request, 'team.html')
 
-def contactus(request):
-    return render(request, 'contact_us.html')
+def contact_us(request):
+    if request.method == 'POST':
+        form = AnonContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Form Submitted'
+            )
+            # Redirect to a thank you page or display a success message
+            return redirect('index')
+    else:
+        form = AnonContactForm()
+    
+    return render(request, 'contact_us.html', {'form': form})
 
 @login_required
 def profile(request):
