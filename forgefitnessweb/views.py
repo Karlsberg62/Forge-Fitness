@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
+from django.contrib import messages
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
 from allauth.account.views import SignupView
@@ -35,6 +36,10 @@ def add_comment(request, slug):
             comment.username = request.user 
             comment.post = session_obj  
             comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted'
+            )
             # Redirect to the session detail page after successfully adding the comment
             return redirect('session-detail', slug=slug)
     else:
@@ -54,6 +59,10 @@ def edit_comment(request, comment_id):
             form = CommentForm(request.POST, instance=comment)
             if form.is_valid():
                 form.save()
+                messages.add_message(
+                    request, messages.SUCCESS,
+                    'Comment edited'
+                )
                 # Redirect if successful, redirect elsewhere if not 
                 return redirect('session-detail', slug=comment.post.slug)
         else:
@@ -72,6 +81,10 @@ def delete_comment(request, comment_id):
         session_slug = comment.post.slug
         # Delete the comment
         comment.delete()
+        messages.add_message(
+                    request, messages.SUCCESS,
+                    'Comment deleted'
+                )
         # Redirect if successful, redirect elsewhere if not 
         return redirect('session-detail', slug=session_slug)
     else:
@@ -84,6 +97,17 @@ class UserEditView(generic.UpdateView):
 
     def get_object(self):
         return self.request.user
+    
+    def form_valid(self, form):
+        if form.is_valid():
+            self.object = form.save()
+            messages.add_message(
+                    self.request, messages.SUCCESS,
+                    'Settings edited'
+                )
+            return super().form_valid(form)
+        else:
+            return self.form_invalid(form)
 
 class EditProfileView(generic.UpdateView):
     model = Profile
@@ -95,3 +119,14 @@ class EditProfileView(generic.UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user.profile
+
+    def form_valid(self, form):
+        if form.is_valid():
+            self.object = form.save()
+            messages.add_message(
+                    self.request, messages.SUCCESS,
+                    'Profile edited'
+                )
+            return super().form_valid(form)
+        else:
+            return self.form_invalid(form)
