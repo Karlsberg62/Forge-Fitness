@@ -1,10 +1,10 @@
+from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib import messages
-from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
 from allauth.account.views import SignupView
-from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserChangeForm
 from .models import Profile, CommentReview, Sessions
 from .forms import CommentForm, EditSettingsForm
 
@@ -130,3 +130,20 @@ class EditProfileView(generic.UpdateView):
             return super().form_valid(form)
         else:
             return self.form_invalid(form)
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        # Assuming the user and profile are related via OneToOneField
+        user = request.user
+        profile = user.profile
+
+        # Delete the user and profile
+        user.delete()
+        profile.delete()
+
+        # Redirect to a relevant page after deletion
+        return redirect('index')  # Change 'home' to the desired URL name
+
+    # If request method is not POST, render the template or handle accordingly
+    return render(request, 'delete_account.html')
