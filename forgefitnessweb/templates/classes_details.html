@@ -58,9 +58,11 @@
                     {% endif %}
                 </div>
                 <!-- Add Comment button -->
-                <div class="card-footer text-center">
-                    <a class="btn btn-success" href="{% url 'add-comment' sessions.slug %}">Add Comment</a>
-                </div>
+                {% if request.user.is_authenticated %}
+                    <div class="card-footer text-center">
+                        <a class="btn btn-success" href="{% url 'add-comment' sessions.slug %}">Add Comment</a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

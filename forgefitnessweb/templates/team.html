@@ -10,16 +10,12 @@
             <p class="lead text-white">
                 Meet the heartbeat of our organization – our incredible team of dedicated individuals who bring passion, expertise, and energy to every aspect of our business.
             </p>
-            {% if not user.is_authenticated %}
-            <a class="btn btn-success {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
-            {% else %}
-            {% endif %}
         </div>
         <div class="row mt-5">
             <!-- First Row of Cards -->
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-3">
                         <div class="card teams-card">
                             <img src="{% static 'media/images/dylan.jpg' %}" class="card-img-top teams-pfp" alt="Bristol Image">
                             <div class="card-body">
@@ -28,7 +24,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-3">
                         <div class="card teams-card">
                             <img src="{% static 'media/images/justin.jpg' %}" class="card-img-top teams-pfp" alt="Birmingham Image">
                             <div class="card-body">
@@ -42,7 +38,7 @@
             <!-- Second Row of Cards -->
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-3">
                         <div class="card teams-card">
                             <img src="{% static 'media/images/zahara.jpg' %}" class="card-img-top teams-pfp" alt="Bristol Image">
                             <div class="card-body">
@@ -51,7 +47,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-3">
                         <div class="card teams-card">
                             <img src="{% static 'media/images/hannah.jpg' %}" class="card-img-top teams-pfp" alt="Birmingham Image">
                             <div class="card-body">
@@ -63,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-light text-center mt-5 lead">
+        <div class="text-light text-center mt-5 mb-5 lead">
             {% if not user.is_authenticated %}
             <p>Want to work with our team? Sign up today.</p>
             <a class="btn btn-success {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>

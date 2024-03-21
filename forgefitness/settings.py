@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'forgefitnessweb.apps.ForgefitnesswebConfig',
     'crispy_forms',
     'crispy_bootstrap5',
+    "phonenumber_field",
 ]
 
 SITE_ID = 1
@@ -137,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
+PHONENUMBER_DEFAULT_REGION = "GB"
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
