@@ -2,59 +2,67 @@
 {% load static %}
 
 {% block content %}
-<div class="text-light">
-    <!-- Display session details -->
-    <h2 class="font-weight-bold">{{ sessions.title }}</h2>
-    <p>{{ sessions.location }}, {{ sessions.date }}, {{ sessions.time }}</p>
-    <p>{{ sessions.description }}</p>
-</div>
-
-<br>
-
-<h2 class="text-light">Comments</h2>
-
-{% if not sessions.comments.all %}
-    <!-- Display a message if there are no comments -->
-    <p class="text-light">No Comments Yet... </p>
-{% else %}
-    <!-- Iterate over each comment and display them in a card -->
-    {% for comment in sessions.comments.all %}
-    <div class="card bg-dark text-light mb-3">
-        <div class="card-header">
-            <div class="row align-items-center">
-                <!-- Profile picture -->
-                <div class="col-auto">
-                    <img src="{{ comment.username.profile.profile_pic.url }}" alt="Profile Picture" class="rounded-circle mr-2 profile-pic" style="height: 50px; width: 50px;">
+<div class="container">
+    <div class="row">
+        <!-- Left Column for Session Details -->
+        <div class="col-md-6 text-light">
+            <!-- Display session details -->
+            <h1 class="font-weight-bold text-center">{{ sessions.title }}</h2>
+            <h3 class="mb-2">{{ sessions.location }}, {{ sessions.date }}, {{ sessions.time }}</h3>
+            <p>{{ sessions.description }}</p>
+        </div>
+        <!-- Right Column for Comments -->
+        <div class="col-md-6">
+            <div class="card base-background text-light">
+                <div class="card-header">
+                    <h2 class="card-title text-center">Comments</h2>
                 </div>
-                <!-- Name -->
-                <div class="col">
-                    <h5>{{ comment.username }}</h5>
+                <div class="card-body card-scroll">
+                    {% if not sessions.comments.all %}
+                        <!-- Display a message if there are no comments -->
+                        <p class="text-light text-center">No Comments Yet... </p>
+                    {% else %}
+                        <!-- Iterate over each comment and display them in a card -->
+                        {% for comment in sessions.comments.all %}
+                        <div class="card bg-secondary text-light mb-3">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <!-- Profile picture -->
+                                    <div class="col-auto">
+                                        <img src="{{ comment.username.profile.profile_pic.url }}" alt="Profile Picture" class="rounded-circle mr-2 profile-pic" style="height: 50px; width: 50px;">
+                                    </div>
+                                    <!-- Name -->
+                                    <div class="col">
+                                        <h5>{{ comment.username }}</h5>
+                                    </div>
+                                    <!-- Date and time -->
+                                    <div class="col">
+                                        <p>{{ comment.created_on }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- Rating -->
+                                <p class="card-text">Rating: {{ comment.rating }}</p>
+                                <!-- Comment body -->
+                                <p class="card-text">{{ comment.body }}</p>
+                                
+                                <!-- Display edit and delete buttons for authenticated user's own comments -->
+                                {% if request.user.is_authenticated and comment.username == request.user %}
+                                    <a href="{% url 'edit-comment' comment.pk %}" class="btn btn-dark">Edit</a>
+                                    <a href="{% url 'delete-comment' comment.pk %}" class="btn btn-danger">Delete</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
-                <!-- Date and time -->
-                <div class="col">
-                    <p class="text-light">{{ comment.created_on }}</p>
+                <!-- Add Comment button -->
+                <div class="card-footer text-center">
+                    <a class="btn btn-success" href="{% url 'add-comment' sessions.slug %}">Add Comment</a>
                 </div>
             </div>
         </div>
-        <div class="card-body">
-            <!-- Rating -->
-            <p class="card-text">Rating: {{ comment.rating }}</p>
-            <!-- Comment body -->
-            <p class="card-text">{{ comment.body }}</p>
-            
-            <!-- Display edit and delete buttons for authenticated user's own comments -->
-            {% if request.user.is_authenticated and comment.username == request.user %}
-                <a href="{% url 'edit-comment' comment.pk %}" class="btn btn-dark">Edit</a>
-                <a href="{% url 'delete-comment' comment.pk %}" class="btn btn-danger">Delete</a>
-            {% endif %}
-        </div>
     </div>
-    {% endfor %}
-{% endif %}
-
-<br>
-
-<!-- Add Comment button -->
-<a class="btn btn-success" href="{% url 'add-comment' sessions.slug %}">Add Comment</a>
-
+</div>
 {% endblock %}

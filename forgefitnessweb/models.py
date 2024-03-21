@@ -39,7 +39,7 @@ class Sessions(models.Model):
     
 class CommentReview(models.Model):
 
-    username = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='comments')
+    username = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='comments')
     post = models.ForeignKey(Sessions, on_delete=models.CASCADE, related_name="comments")
     body = models.TextField()
     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])

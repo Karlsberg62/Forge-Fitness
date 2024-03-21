@@ -1,4 +1,3 @@
-
 /* Base Page */
 
 html, body {
@@ -79,3 +78,20 @@ html, body {
 .profile-pic {
     border: 2px solid #fff; 
 }
+
+.base-profile {
+    height: 50px;
+    width: 50px;
+}
+
+/* Card Styling */
+
+.card-border {
+    border: 2px solid #ff6cab;
+}
+
+.card-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+}
+

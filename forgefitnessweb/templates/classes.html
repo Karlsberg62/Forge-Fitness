@@ -10,6 +10,8 @@
             <h1 class="display-4 text-light font-weight-bold">Classes with Forge Fitness</h1>
             <p class="lead text-white">
                 Forge Fitness prides itself by offering premium fitness classes, free of charge, to all our members.
+                <br>
+                Share your experience with us by leaving a comment and review, letting us know how you felt about our classes!
             </p>
         </div>
          <!-- Classes Section -->
@@ -17,7 +19,7 @@
             <div class="row">
                 {% for session in object_list %}
                 <div class="col-md-4 mb-4">
-                    <div class="card bg-dark text-white">
+                    <div class="card bg-dark text-white card-border">
                         <div class="card-body">
                             <!-- Session Title with Link -->
                             <h5 class="card-title"><a href="{% url 'session-detail' session.slug %}" class="text-white">{{ session.title }}</a></h5>
@@ -43,5 +45,12 @@
             </nav>
         {% endif %}
     </div>
+
+    <div class="col-md-12 text-center">
+        <p class="lead text-white">
+            Share your experience with us by leaving a comment and review, letting us know how you felt about our classes!
+        </p>
+    </div>
+
 </section>
 {% endblock %}
