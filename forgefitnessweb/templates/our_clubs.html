@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container-fluid py-5">
+    <div class="row align-items-center">
+        <!-- Title and Text -->
+        <div class="col-md-12 text-center">
+            <h1 class="display-4 text-light font-weight-bold">Our Clubs</h1>
+            <p class="lead text-white">
+                Explore our club locations. Discover our renowned fitness hubs in Bristol and Birmingham, where cutting-edge gym amenities meet budget-friendly rates. With an ambiance that's both chic and vibrant, each venue promises an unparalleled fitness journey tailored for you.
+            </p>
+            {% if not user.is_authenticated %}
+            <a class="btn btn-success {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
+            {% else %}
+            {% endif %}
+
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <img src="{% static 'media/images/bristol.jpg' %}" class="img-fluid img-thumbnail" alt="Image 1">
+                <div class="text-center mt-3">
+                    <h2 class="text-white font-weight-bold">Bristol</h2>
+                    <p class="lead text-white">Unleash your inner warrior at our Bristol-based gym. Nestled in a stunning location, our facility offers a stylish ambiance where you can hone your skills. </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'media/images/birmingham.jpg' %}" class="img-fluid img-thumbnail" alt="Image 2">
+                <div class="text-center mt-3">
+                    <h2 class="text-white font-weight-bold">Birmingham</h2>
+                    <p class="lead text-white">From cutting-edge equipment to expert trainers, our Birmingham location provides everything you need to achieve your fitness goals. Whether you're a seasoned athlete or just starting your fitness journey, this is the perfect place to train, grow, and thrive.</p>
+                </div>
+            </div>
+            <div class="text-light text-center mt-5 lead">
+                <p>Experience the best of both worlds at our Bristol and Birmingham locations with our premium classes exclusively for members. From high-energy cardio sessions to strength-building workouts, there's something for everyone. Join us today and elevate your fitness journey to new heights!</p>
+                {% if not user.is_authenticated %}
+                <a class="btn btn-success {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
+                {% else %}
+                <a class="btn btn-success" href="{% url 'classes' %}">View our classes</a>
+                {% endif %}
+    
+            </div>
+        </div>
+
+</section>
+{% endblock %}

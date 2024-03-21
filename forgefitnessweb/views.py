@@ -13,9 +13,16 @@ from .forms import CommentForm, EditSettingsForm
 def index(request):
     return render(request,'index.html')
 
+def our_clubs(request):
+    return render(request,'our_clubs.html')
+
+def team(request):
+    return render(request, 'team.html')
+
 @login_required
 def profile(request):
     return render(request,'profile.html')
+
 
 class SessionList(generic.ListView):
     model = Sessions

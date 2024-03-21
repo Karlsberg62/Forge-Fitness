@@ -5,6 +5,8 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("accounts/", include("allauth.urls")),
     path("profile/", views.profile, name="profile"),
+    path("ourclubs/", views.our_clubs, name="our_clubs"),
+    path("team/", views.team, name="team"),
     path("classes/", views.SessionList.as_view(), name="classes"),
     path("<slug:slug>/",views.SessionDetail.as_view(), name="session-detail"),
     path("<slug:slug>/add_comment/", views.add_comment, name="add-comment"),

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="container-fluid py-5">
+    <div class="row align-items-center">
+        <!-- Title and Text -->
+        <div class="col-md-12 text-center">
+            <h1 class="display-4 text-light font-weight-bold">Our Team</h1>
+            <p class="lead text-white">
+                Meet the heartbeat of our organization – our incredible team of dedicated individuals who bring passion, expertise, and energy to every aspect of our business.
+            </p>
+            {% if not user.is_authenticated %}
+            <a class="btn btn-success {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
+            {% else %}
+            {% endif %}
+        </div>
+        <div class="row mt-5">
+            <!-- First Row of Cards -->
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card teams-card">
+                            <img src="{% static 'media/images/dylan.jpg' %}" class="card-img-top teams-pfp" alt="Bristol Image">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Dylan Vasquez</h5>
+                                <p class="card-text text-center">Personal Trainer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card teams-card">
+                            <img src="{% static 'media/images/justin.jpg' %}" class="card-img-top teams-pfp" alt="Birmingham Image">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Justin Shaifer</h5>
+                                <p class="card-text text-center">Osteopath</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Second Row of Cards -->
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card teams-card">
+                            <img src="{% static 'media/images/zahara.jpg' %}" class="card-img-top teams-pfp" alt="Bristol Image">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Zahara Brooks</h5>
+                                <p class="card-text text-center">Personal Trainer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card teams-card">
+                            <img src="{% static 'media/images/hannah.jpg' %}" class="card-img-top teams-pfp" alt="Birmingham Image">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Hannah Nelson</h5>
+                                <p class="card-text text-center">Osteopath</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-light text-center mt-5 lead">
+            {% if not user.is_authenticated %}
+            <p>Want to work with our team? Sign up today.</p>
+            <a class="btn btn-success {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
+            {% else %}
+            <p>Interested in becoming part of our dynamic team? Explore our array of premium fitness classes available today.</p>
+            <a class="btn btn-success" href="{% url 'classes' %}">View our classes</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

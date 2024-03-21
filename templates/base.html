@@ -40,20 +40,20 @@
              <!-- Hamburger icon -->
              <button class="navbar-toggler mr-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
              aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon mr-5"></span>
+             <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- Links on the left -->
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Our Clubs</a>
+                        <a class="nav-link text-light" href="{% url 'our_clubs' %}">Our Clubs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{% url 'classes' %}">Classes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Team</a>
+                        <a class="nav-link text-light" href="{% url 'team' %}">Team</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="#">Contact Us</a>

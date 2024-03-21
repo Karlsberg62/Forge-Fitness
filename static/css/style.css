@@ -87,11 +87,20 @@ html, body {
 /* Card Styling */
 
 .card-border {
-    border: 2px solid #ff6cab;
+     border: 2px solid #DA70D6;
 }
 
 .card-scroll {
     max-height: 400px;
     overflow-y: auto;
+}
+
+.teams-card {
+    height: 100%;
+}
+
+.teams-pfp {
+    height: 300px; 
+    object-fit: cover;
 }
 
