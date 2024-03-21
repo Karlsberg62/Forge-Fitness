@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from allauth.account.views import SignupView
 from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Profile, CommentReview, Sessions
 from .forms import CommentForm, EditSettingsForm
 
@@ -12,6 +13,7 @@ from .forms import CommentForm, EditSettingsForm
 def index(request):
     return render(request,'index.html')
 
+@login_required
 def profile(request):
     return render(request,'profile.html')
 
@@ -90,7 +92,7 @@ def delete_comment(request, comment_id):
     else:
         return redirect('session-detail', slug=comment.post.slug)
 
-class UserEditView(generic.UpdateView):
+class UserEditView(LoginRequiredMixin, generic.UpdateView):
     form_class = EditSettingsForm
     template_name = 'edit_settings.html'
     success_url = reverse_lazy('index')
@@ -109,7 +111,7 @@ class UserEditView(generic.UpdateView):
         else:
             return self.form_invalid(form)
 
-class EditProfileView(generic.UpdateView):
+class EditProfileView(LoginRequiredMixin, generic.UpdateView):
     model = Profile
     template_name = "edit_profile.html"
     fields = ['profile_pic', 'age', 'gender', 'phone', 'address', 'postcode']
