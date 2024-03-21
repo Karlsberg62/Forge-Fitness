@@ -19,6 +19,9 @@ def our_clubs(request):
 def team(request):
     return render(request, 'team.html')
 
+def contactus(request):
+    return render(request, 'contact_us.html')
+
 @login_required
 def profile(request):
     return render(request,'profile.html')
