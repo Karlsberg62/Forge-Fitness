@@ -7,7 +7,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Profile(models.Model):
     #Name, Age, Gender, Phone, Email, Address, Current Plan 
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    profile_pic = CloudinaryField('Profile Picture', default='foggy-bg.jpg')
+    profile_pic = CloudinaryField('Profile Picture', default="ry0iwt4v2feszvwwxlra.png")
     age = models.PositiveIntegerField(null=True)
     gender_choice = [
         ('M', 'Male'),

@@ -43,7 +43,7 @@ html, body {
 }
 
 /* Footer */
-
+/* Additional breakpoint to fix Desktop footer */ 
 @media (min-width: 768px) {
     .footer {
         position: fixed;
@@ -52,7 +52,6 @@ html, body {
         width: 100%;
     }
 }
-
 
 .footer .list-inline {
     color: #fff; 
