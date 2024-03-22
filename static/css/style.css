@@ -113,3 +113,6 @@ html, body {
     object-fit: cover;
 }
 
+#id_password1_helptext {
+    color: white !important;
+}
