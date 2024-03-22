@@ -19,16 +19,16 @@
       {% endblocktrans %}</p>
     </div>
     <div class="row">
-      <div class="col-md-8 mt-3 text-light">
-        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-          {% csrf_token %}
-          {{ form|crispy }}
-          {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-          {% endif %}
-          <button class="right btn bg-blue2 bg-success" type="submit">{% trans "Continue" %} &raquo;</button>
-      </form>
-      </div>
+      <div class="col-md-8 mt-3 text-light mb-4">
+          <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+            <button class="right btn bg-blue2 bg-success" type="submit">{% trans "Continue" %} &raquo;</button>
+          </form>
+        </div>
       <div class="col-md-4 mt-3 register-pic shadow">
         <img src="{% static 'media/images/weightlifting.jpg' %}" alt="Hero Image" class="img-fluid rounded-circle">
       </div>
