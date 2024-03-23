@@ -245,7 +245,17 @@ The development cycle over the course of this project has allowed me to cover th
 
 # Database
 
+This is my initial database model. 
+
 ![My initial database model](readme/assets/DatabaseGraph.png)
+
+During development, changes were made as I improved my understanding of the database requirements and documentation of technologies I used. 
+
+- It became impractical to connect the Profile and Comments/Review tables. One connection from User table to Comments was enough rather than passing through two tables.
+- The slug FK for comments/review was impractical, it is far easier to connect the two tables by a post name so that each comment is associated with a specific session.
+- Removing the image from Comments/Review, this table did not require this information if it already exists in another table that is also being called to the specific session.
+
+Other than these changes, the majority of alterations have come from form validation on my models in regard to phone numbers, passwords and picture uploads using various technologies.
 
 # Features
 ## Future Features
@@ -264,3 +274,5 @@ The development cycle over the course of this project has allowed me to cover th
 # Deployment
 
 # Credits
+## Media
+## Code
