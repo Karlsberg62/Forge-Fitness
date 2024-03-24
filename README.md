@@ -258,7 +258,76 @@ During development, changes were made as I improved my understanding of the data
 Other than these changes, the majority of alterations have come from form validation on my models in regard to phone numbers, passwords and picture uploads using various technologies.
 
 # Features
+
+Please see the [UX - Structure](#structure) for screenshots of the pages containing the features. Any pages not previous screenshotted are provided. This section covers each feature and the choices made behind the feature.
+
+### Register/Login/Logout
+
+- Using Django All Auth, the project includes the ability to handle user creation, authentication and the ability to authorise users. Using the standard User form, amplified by crispy forms and bootstrap, alongside adding fields for first name and second name creates our first step to registering. 
+
+- Upon registering, Users are redirecting to the edit_profile page to add additional details. This step is intentional to make it seem like the transition is one process in lue of using custom forms. Users are able to skip this step if they wish as the details are not important for functionality on the site, they are purely for users ability to express their individuality and potential future features on membership.
+
+### Navbar
+
+- A key feature, the nav bar. This feature is on every page and will always remain pinned to the top of the page regardless of page size or content to allow users easy navigation around the site and to reinforce the visual cues about the users status. The brand logo is a permanent fixture on the screen at all times assisting with the goal of building our intangible values (Reputation, Trust etc) with the user. 
+
+### Footer
+
+- An extension of the nav bar. This echos many of the design choices, however this includes social links for potential points of contact for users. If these links were to the brand social accounts, this would be aimed at assisting our intangible values as well as driving users to conversion by registering on the site alongside our other social platforms. 
+
+### Messages
+
+- Each feature that allows users to interact with the site (Profile, Sessions, Comment Review) will redirect to the home page and provide a success or fail message to the user. This is an important user experience because this approach ensures consistency, simplicity, enhancing usability and reducing confusion.
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/messages.png">
+</details>
+
+### Gym Classes (Sessions model)
+
+- Based on the classes page, this feature showcases each Session available to users. Each session would be hosted at one of our locations, with basic details on what it is, where and when. Users can interact with the sessions via comments and reviews. In future features, it is intended that users would have greater interaction in the form of attendence and staff details. 
+
+- Admins or Staff approved accounts can create sessions while Anonymous users and Authenticated Users can read the sessions. Only Authenticated Users will see options to create/edit/delete comments and reviews.
+
+### Comments (Comment Review model)
+
+- Only Authenticated users will see options to create/edit/delete comments and reviews. Furthermore, Authenticated users can only edit or delete their own comments as this feature is tied by the username executing the event.
+
+### Profile (Profile model), Edit Profile & Settings
+
+- The Profile feature is optional. Authenticated users can choose to ignore this step if they wish, however the profile picture ties in with users comments allowing greater personalisation. Again, this is aimed at users feeling part of a community. 
+
+- The Profile page is only available to authenticated users and will only show your individual details. If a user logs out, the profile page will become unavailable. If a user logs in on multiple browsers or devices, the page will only show the details & ability to edit/delete the profile that is logged in on that specific browser or device.
+
+- The settings page is a re-creation of the User form that allows authenticated users the ability to make changes if mistakes were made in registration. 
+
+### Delete
+
+- Authenticated users have the ability to delete their Profile. This opens a seperate page that checks if the user really wants to do this. If the user chooses to delete their account, this will remove all posts, comments reviews alongside their User & synced Profile data.
+
+- This feature was provided as part of CRUD and on the other hand, a prevention for users accidentally pressing the button.
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/deleteprofile.png">
+</details>
+
 ## Future Features
+
+These features were considered, but due to the short timeframe in development were delayed for future deployments.
+
+### Membership and E-commerce
+
+- Adding membership options for Users during Registration via custom forms integrated with the default User form. This would capture a choice (Similar to Gender in Profile) that would then connect to the e-commerce table, widget or software that would securely contain their financial information, process the initial payment and output the membership option chosen to the Users Profile. 
+
+- The idea behind this being that Users may want to alter their financial information, amend their level of membership and would also allow the business to offer content based on membership levels. (For example, all locations available to Monthly users, but not daily, discounts or gym session limits)
+
+### Attendence & Staff Details
+
+- Adding an attendance feature to the gym sessions session details that would allow users to virtually signal that they will attend, provide their profile information to the staff member running the session and set a maximum attendance. The idea behind this feature would be allowing greater interactivity, providing more information to users and ultimately improving the user experience of our service.
+
+### Profile Extras
+
+- Adding room in the Profile page for a history of comments or classes attended. This would allow users to easily go back to a classes session details and add a review alongside talking with other users if they can see a history of the comment sections they have been involved in. 
 
 # Testing
 ## User Story Testing
@@ -269,7 +338,34 @@ Other than these changes, the majority of alterations have come from form valida
 
 # Technologies
 ## Languages
+
+Python, Javascript, HTML, CSS
+
 ## Programs Frameworks Libraries
+
+- Django for full stack development.
+- Django All Auth for register, login and user management.
+- Django-Phonenumber-field for form validation on phone numbers.
+- Phonenumbers for form validation on phone numbers.
+- PostgreSQL for database management.
+- Psycopg PostgreSQL adapter for Python.
+- Elephant SQL for management of PostgreSQL databases.
+- Bootstrap for styling and front end development.
+- Crispy Forms for styled forms.
+- Crispy Bootstrap for styling crispy forms.
+- Google Fonts for typography in development.
+- Gitpod for an online development.
+- Github for hosting.
+- Git to provide version control.
+- Heroku for cloud based deployment.
+- Cloudinary for cloud based image hosting.
+- DJ3-Cloudinary-Storage for cloud based image storage.
+- Favicon for the website favicon.
+- CloudConvert for image conversion to webp.
+- Whitenoise for serving static files on Heroku.
+- Gunicorn for ability to process multiple HTTP requests while hosting on Heroku.
+- Pillow for image processing with Python.
+- Balsamiq - Design of wireframes
 
 # Deployment
 
