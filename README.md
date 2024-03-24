@@ -331,6 +331,11 @@ These features were considered, but due to the short timeframe in development we
 
 # Testing
 ## User Story Testing
+| Expectations                                                                                 | Realisation                                                               |
+|-|-|
+| A | B |
+
+
 ## Manual Testing
 ## Automated Testing
 ### Code Validation
