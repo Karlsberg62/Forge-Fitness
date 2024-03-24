@@ -331,15 +331,44 @@ These features were considered, but due to the short timeframe in development we
 
 # Testing
 ## User Story Testing
-| Expectations                                                                                 | Realisation                                                               |
+| Expectations | Realisation |
 |-|-|
-| A | B |
+| I want to be able to navigate the entire site regardless of device | The website is fully responsive and accessable on all screen sizes, tested via Chrome dev tools |
+| I want to create an account to interact with the site | The user can register to the site |
+| I want to easily log out and log back in | Authenticated users can press logout, then login and enter their username/password to log back in |
+| I want a visual cue that after interacting with the site, something has happened | Messages appear for all events on the website |
+| I want to be able to navigate to all pages easily | A navbar and footer are present in the same location on all pages |
+| I want content that is only available to registered users | The Profile, Comments Reviews are only available to registered users |
+| I want content that helps build the brand or business | Clubs, Classes, Team are all available for additional content for all users  |
+| I want to view the gym classes | All users are allowed to read the gym classes and view their details |
+| I want to comment and review the gym classes | Upon registering, users can add, edit & delete their comments review on any gym class page  |
+| I want to mark myself as attending gym classses | A future feature that was not implemented on this deployment |
+| I want to delete comments and reviews | Upon registering, users can add, edit & delete their comments review on any gym class page |
+| I want to be able to edit my profile to my liking | Upon registering, users can  edit & delete their Profile or User settings |
+| I want to be able to delete my profile | Authenticated Users can click the delete profile button and then delete their profile by confirming via the button on the page | 
+| I want to pick the level of membership I want | A future feature that was not implemented on this deployment |
+| I want visual clarity/cues for when I am logged in or out | A message will appear for events including logging in or out alongside buttons changing on navbar |
+| I want to contact your business easily | A simple contact form was implemented for all users on the Contact page |
+| I want my data to be secure | Form validation for passwords, emails and phone numbers alongside Django security has been implemented |
+| I want to be able to reset my password | Users can amend their passwords on the edit settings page or use the Reset Password on the login page |
 
 
 ## Manual Testing
 ## Automated Testing
 ### Code Validation
 ### Lighthouse
+
+- Lighthouse testing for Desktop on homepage
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/lighthouse-pc.png">
+</details>
+
+- Lighthouse testing for Mobile on homepage
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/ligthouse-mob.png">
+</details>
 
 # Technologies
 ## Languages
