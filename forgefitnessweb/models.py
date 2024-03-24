@@ -4,8 +4,11 @@ from cloudinary.models import CloudinaryField
 from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
+
+
 class Profile(models.Model):
-    #Name, Age, Gender, Phone, Email, Address, Current Plan 
+
+    # Name, Age, Gender, Phone, Email, Address, Current Plan
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     profile_pic = CloudinaryField('image', default="https://res.cloudinary.com/dkfwootfw/image/upload/ry0iwt4v2feszvwwxlra.png")
     age = models.PositiveIntegerField(null=True)
@@ -18,10 +21,11 @@ class Profile(models.Model):
     phone = PhoneNumberField(max_length=15, null=True)
     address = models.CharField(null=True)
     postcode = models.CharField(default="", null=True)
-    
+
     def __str__(self):
-        return f'{self.user}' 
- 
+        return f'{self.user}'
+
+
 class Sessions(models.Model):
     title = models.CharField(max_length=200, unique=True)
     location = models.CharField(max_length=200)
@@ -36,8 +40,9 @@ class Sessions(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.title} class at {self.location}, {self.time}"   
-    
+        return f"{self.title} class at {self.location}, {self.time}"
+
+
 class CommentReview(models.Model):
 
     username = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='comments')
@@ -47,7 +52,8 @@ class CommentReview(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.username} - {self.created_on}" 
+        return f"{self.username} - {self.created_on}"
+
 
 class AnonContact(models.Model):
     name = models.CharField(max_length=100)

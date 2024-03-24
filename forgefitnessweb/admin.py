@@ -6,6 +6,3 @@ from django import forms
 admin.site.register(Profile)
 admin.site.register(CommentReview)
 admin.site.register(Sessions)
-
-
-

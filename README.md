@@ -354,8 +354,240 @@ These features were considered, but due to the short timeframe in development we
 
 
 ## Manual Testing
+
+### Responsiveness
+
+<img src="readme/assets/testing/responsiveness.png">
+
+- Tested on Chrome, Edge, Firefox, Safari and Opera via Desktop. 
+- Using Chrome Developer Tools with all options available where possible, an issue was noted on Galaxy Fold for all browsers. Overall, still passing with Good as everything else worked as expected.
+- Screenshots tested with Chrome Developer Tools on the following: iPhone SE, Pixel 7 & iPad Mini
+- Testing on the following pages in this order: Homepage, Classes, Class Details & Register 
+
+- iPhone SE:
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/iPhonehome.png">
+</details>
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/iPhoneClasses.png">
+</details>
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/iPhoneClassDetails.png">
+</details>
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/iPhoneReg.png">
+</details>
+
+- Pixel 7
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/Pixel7Home.png">
+</details>
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing//Pixel7Classes.png">
+</details>
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/Pixel7ClassesDetails.png">
+</details>
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/Pixel7Reg.png">
+</details>
+
+- iPad Mini
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing//iPadMiniHome.png">
+</details>
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/iPadMiniClasses.png">
+</details>
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/iPadMiniClassDetails.png">
+</details>
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/iPadMiniReg.png">
+</details>
+
+### Manual Tests
+
+<img src="readme/assets/testing/mt1.png">
+<img src="readme/assets/testing/mt2.png">
+
 ## Automated Testing
+
+### Bugs
+
+- Profile Picture default URL using HTTP
+  - Solved by changing the default URL in the Model Field with an image I have preloaded using a HTTPS url. Previously the uploads were being switched from HTTP to HTTPS by the browser automatically. This was tanking my performance score with Lighthouse testing.
+
+- Profile Picture positioning 
+  - Profile Picture on logged in users using Mobile caused the NavBar breakpoint to change. The Profile/Login and Profile Picture would drop below the nav bar causing an issue for the UX. This was solved by not showing the Profile Picture on devices below the Bootstrap medium screen size. 
+
+- Footer positioning
+  - The footer would typically sit just below the content on the page causing an issue on desktop that the footer was too high on the page. To fix this, I used `fixed-bottom`. Unfortunately, the mobile footer would break and hide buttons on the page when using this bootstrap class. So as a work around, I have added a media query for Desktop versions of the footer to move it to the bottom of the page, while removing `fixed-bottom` so the mobile version works as intended.
+
+- Reset Password Form
+  - Currently this bug still exists in the live version. After submitting the form, you will get an error as the AllAuth form broke, I believe this is potentially due to my custom form amendments. The page will still load. 
+
+- Password Help Text Colour
+  - Within the form for Users, there is text for password creation. This was always staying as dark despite adding `text-light` class to its container. To combat this, I have used the developer tools and located the ID associated with the password text. I have assigned priority to my css ID and amended the text colour. 
+
 ### Code Validation
+
+- HTML
+
+- Any Python/Django related issues detected are being filtered (For example, href attributes)
+
+Homepage
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/homepagehtml.png">
+</details>
+
+Our Clubs
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/ourclubshtml.png">
+</details>
+
+Classes
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/classeshtml.png">
+</details>
+
+Classes Details
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/classesdetailshtml.png">
+</details>
+
+Add Comment
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/addcommenthtml.png">
+</details>
+
+Edit Comment
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/editcommenthtml.png">
+</details>
+
+Team
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/teamhtml.png">
+</details>
+
+Contact Us
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/contactushtml.png">
+</details>
+
+Profile
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/profilehtml.png">
+</details>
+
+Edit Profile
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/editprofilehtml.png">
+</details>
+
+Edit Settings
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/editsettingshtml.png">
+</details>
+
+Delete Account
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/deleteprofilehtml.png">
+</details>
+
+- CSS
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/css.png">
+</details>
+
+- Python
+
+- Any issues that were fixable without altering naming conventions or amending code logic has been applied. Resulting in a few pages having lines longer than the accepted PEP8 guidelines.
+
+- Forge Fitness
+
+Settings.py
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/ff-settingspy.png">
+</details>
+
+urls.py
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/ff-urlpy.png">
+</details>
+
+- Forge Fitness Web
+
+views.py
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/viewspy.png">
+</details>
+
+urls.py
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/urlpy.png">
+</details>
+
+signals.py
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/signalspy.png">
+</details>
+
+models.py
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/modelspy.png">
+</details>
+
+forms.py
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/formspy.png">
+</details>
+
+apps.py
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/appspy.png">
+</details>
+
+admin.py
+
+<details><summary>click to expand</summary>
+<img src="readme/assets/testing/adminpy.png">
+</details>
+
 ### Lighthouse
 
 - Lighthouse testing for Desktop on homepage
@@ -403,6 +635,82 @@ Python, Javascript, HTML, CSS
 
 # Deployment
 
+## Github -> Gitpod -> Django
+
+These instructions are assuming you want to continue working on the current files.
+
+- Set up a repository in Github (I have used the CI Gitpod Template as a template)
+- Set up IDE with respository URL (I have used Gitpod)
+- Run the following command: `pip3 install -r requirements.txt`
+- Run the following command: `pip3 freeze --local > requirements.txt`
+- Change Debug to True
+- Add additional IDE URL to Allowed Hosts and CSRF_Trusted_Origins if needed. Example `.codeanywhere.com`
+- Create an eny.py file in the Root directory
+- You will need to add the following to your env.py file:
+  - import os
+  - os.environ.setdefault("DB_URL","ElephantSQLDatabaseURLHERE")
+  - os.environ.setdefault("SK","SETYOURSECRETKEYHERE")
+  - os.environ.setdefault("CLOUDINARY_URL","CLOUDINARYURLHEREONDASHBOARD")
+- You will need to sign up with the following 3rd party software, choose all free options: 
+  - Cloudinary (Get the URL from the dashboard)
+  - ElephantSQL (Soon to be discontinued, create a new instance & copy the URL on the details page)
+  - Heroku
+- Add env.py to gitignore (Double check this is still there)
+- Go to Heroku, create an app, go to settings and add the following to the config vars:
+  - CLOUDINARY_URL: YourCloudinaryURL
+  - SK : SECRET_KEYYOUPICKED
+  - DV_URL : YOURELEPHANTSQLDATABASEURLHERE
+- All settings can remain as is provided no new apps, frameworks, libaries or programs are being added
+- Run the following commands for the new app: `python manage.py makemigrations`, `python manage.py migrate`
+- To make new pages, add the `pagename.html` to ForgeFitnessWeb/Templates
+- On the `pagename.html`, add the following:
+  - {% extends "base.html" %}
+  - {% load static %}
+  - {% block content %}
+  - {% endblock %}
+- Add any HTML inbetween the block content and endblock
+- Any media (Images) can be added here: ForgeFitnessWeb/Static/Media
+- For any changes, run `git add .`, `git commit -m "Message here"`, `git push`
+- Redeploy from main on Heroku
+- View app to see your changes
+- Feel free to view the other pages for references on how to link pages together, link images or interacting with forms
+
+## Admin
+
+- Access the admin section of the website by adding `/admin` on the deployed URL 
+- You will be prompted to login, you must have created superuser credentials for this
+- `python manage.py createsuperuser`, then add a username, email and password
+
 # Credits
+
 ## Media
+
+I have acquired any images from the following sites:
+
+- [Unsplash](https://unsplash.com/)
+- [Logo](https://www.logos.com)
+- [Favicon](https://favicon.io)
+
 ## Code
+
+I have followed tutorials, read the following documentation or used the following tools:
+
+- [Django](https://docs.djangoproject.com/en/5.0/) Documentation.
+- [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) Documentation.
+- [Bootstrap-Crispy](https://django-crispy-forms.readthedocs.io/en/latest/) Documentation.
+- [Cloudinary](https://cloudinary.com/documentation/django_integration#getting_started_guide) Documentation.
+- [Codemy.com](https://www.youtube.com/watch?v=HHx3tTQWUx0&list=PLCC34OHNcOtqW9BJmgQPPzUpJ8hl49AGy) tutorial for Django which I have used for custom forms and models help.
+- [GreatAdib](https://www.youtube.com/@GreatAdib) tutorial for Django Add, Edit, Delete inspiration. 
+- [AllAuth](https://docs.allauth.org/en/latest/) Documentation.
+- CodeInstitute Learning Management System for Comments model, message notifications and elements of settings & setup.
+- [ChatGPT](https://chat.openai.com) for writing generic paragraph content instead of Lorem Ipsum.
+- [Stackoverflow](https://stackoverflow.com) with a number of queries for Django related content.
+- [Django-Phonenumber-field](https://django-phonenumber-field.readthedocs.io/en/latest/) Documentation.
+- [Gyazo](https://gyazo.com) for screenshots.
+- [Balsamiq](https://balsamiq.com) for wireframe designs.
+- [W3C](https://validator.w3.org) tool for HTML & CSS checking.
+- [CI Python Linter](https://pep8ci.herokuapp.com) for Python checking.
+- [CloudConvert](https://cloudconvert.com/jpg-to-webp) for converting images to webp format.
+- [Draw.io](https://app.diagrams.net) for designing my database graphic.
+- [Heroku](https://id.heroku.com) for cloud based hosting.
+- Thank you to Ronan, my mentor, for the advice on which tools would be practical & linking good sources for my queries.
